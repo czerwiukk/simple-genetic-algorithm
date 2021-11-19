@@ -11,8 +11,6 @@ interface PolynomialParams {
   c: number;
 }
 
-const equationParams = { a: -1, b: 15, c: 4 };
-
 const getPolynomialFunction =
   ({ a, b, c }: PolynomialParams) =>
   (x: number) =>
@@ -28,7 +26,7 @@ const crossbreedingProb = 0.7;
 
 const mutationProb = 0.2;
 
-const polynomialFunction = getPolynomialFunction(equationParams);
+const polynomialFunction = getPolynomialFunction({ a: -1, b: 15, c: 4 });
 
 const runAlgorithm = () => {
   const initialPopulation = generateInitialPopulation(individuals);
@@ -51,7 +49,7 @@ const runAlgorithm = () => {
 
   fs.appendFileSync(
     "results.txt",
-    `${bestResult}, ${polynomialFunction(bestResult)}\n`
+    `${bestResult} ${polynomialFunction(bestResult)}\n`
   );
 };
 
