@@ -4,34 +4,26 @@ import { decodeBinary } from "./binary";
 import fs from "fs";
 import { generateInitialPopulation } from "./generateInitialPopulation";
 import { geneticsAlgorithm } from "./geneticAlgorithm";
+import getPolynomialFunction from "./getPolynomialFunction";
 
-interface PolynomialParams {
-  a: number;
-  b: number;
-  c: number;
-}
+const iterations = 40;
 
-const getPolynomialFunction =
-  ({ a, b, c }: PolynomialParams) =>
-  (x: number) =>
-    a * x ** 2 + b * x + c;
+const populationQuantity = 5;
 
-const iterations = 5;
+const individualPairsQuantity = 15;
 
-const populationQuantity = 32;
+const crossbreedingProb = 0.3;
 
-const individuals = 30;
+const mutationProb = 0.5;
+
+const individuals = individualPairsQuantity * 2;
 
 if (populationQuantity * individuals > 150) {
   console.log("Too many individuals");
   process.exit();
 }
 
-const crossbreedingProb = 0.7;
-
-const mutationProb = 0.2;
-
-const polynomialFunction = getPolynomialFunction({ a: -1, b: 15, c: 4 });
+const polynomialFunction = getPolynomialFunction({ a: -1, b: 80, c: -12 });
 
 const runAlgorithm = () => {
   const initialPopulation = generateInitialPopulation(individuals);

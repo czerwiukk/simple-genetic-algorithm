@@ -1,6 +1,7 @@
 import { decodeBinary } from "./binary";
 import { crossbreed } from "./crossbreed";
 import { mutate } from "./mutate";
+import shuffleArray from "./shuffleArray";
 
 interface GeneticsAlgorithmConfig {
   crossbreedingProb: number;
@@ -16,7 +17,7 @@ export const geneticsAlgorithm = (
     polynomialFunction,
   }: GeneticsAlgorithmConfig
 ) => {
-  const crossbredPopulation = population
+  const crossbredPopulation = shuffleArray(population)
     .reduce<[string, string][]>(
       (a, b, idx, arr) => (idx % 2 === 0 ? [...a, [b, arr[idx + 1]]] : a),
       []
