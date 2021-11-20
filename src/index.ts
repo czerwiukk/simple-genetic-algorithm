@@ -22,6 +22,11 @@ const populationQuantity = 32;
 
 const individuals = 30;
 
+if (populationQuantity * individuals > 150) {
+  console.log("Too many individuals");
+  process.exit();
+}
+
 const crossbreedingProb = 0.7;
 
 const mutationProb = 0.2;
